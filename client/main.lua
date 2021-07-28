@@ -1,6 +1,6 @@
 ESX = nil
-local job1, secondjob
-local job1_grade, secondjob_grade
+local job1, job2
+local job1_grade, job2_grade
 local timer = 0
 local sleepThread = 1000
 local allowCommand = true
@@ -31,12 +31,12 @@ RegisterCommand(Config.SwitchCommand, function (src, args, raw)
 end, false)
 
 RegisterNetEvent('brinn-secondjob:returnsecondjob')
-AddEventHandler('brinn-secondjob:returnsecondjob', function(secondjob, secondjob_grade)
-    secondjob = secondjob
-    secondjob_grade = secondjob_grade
+AddEventHandler('brinn-secondjob:returnsecondjob', function(job2, job2_grade)
+    job2 = job2
+    job2_grade = job2_grade
     job1 = ESX.PlayerData.job.name
     job1_grade = ESX.PlayerData.job.grade
-    TriggerServerEvent('brinn-secondjob:setsecondjob', job1, job1_grade, secondjob, secondjob_grade)
+    TriggerServerEvent('brinn-secondjob:setsecondjob', job1, job1_grade, job2, job2_grade)
     local msg1 = 'You switch jobs.'
     local msg2 = 'Your actual job its: '..ESX.PlayerData.job.label..' and your rank its: '..ESX.PlayerData.job.grade_label
 	local type = 'success'
