@@ -4,6 +4,8 @@ Config.SwitchCommand = 'switchjob'
 Config.NotificationCommand = 'showjob'
 Config.Timer = 1 -- In Seconds.
 Config.Webhook = 'Your Webhook Here'
+Config.ShowJob = true
+
 
 --	Your Notification System
 RegisterNetEvent('brinn-secondjob:notification')

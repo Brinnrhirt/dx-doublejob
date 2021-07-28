@@ -45,15 +45,17 @@ AddEventHandler('brinn_switchjob:setsecondjob', function(job1, job1_grade, secon
     SendDiscordWebhook(_source, job1, job1_grade, secondjob, secondjob_grade, 255)
 end)
 
-RegisterCommand(Config.NotificationCommand, function(source)
-    local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
-    local job = xPlayer.job.label
-    local jobgrade = xPlayer.job.grade_label
-    local msg = 'You are working as: ' .. job .. ' - ' .. jobgrade
-    local type = 'error'
-    TriggerClientEvent('brinn-secondjob:notification',source,type,msg)
-end)
+if Config.ShowJob =- true then 
+    RegisterCommand(Config.NotificationCommand, function(source)
+        local _source = source
+        local xPlayer = ESX.GetPlayerFromId(_source)
+        local job = xPlayer.job.label
+        local jobgrade = xPlayer.job.grade_label
+        local msg = 'You are working as: ' .. job .. ' - ' .. jobgrade
+        local type = 'error'
+        TriggerClientEvent('brinn-secondjob:notification',source,type,msg)
+    end)
+end
 
 
 
