@@ -20,7 +20,8 @@ local job2     = xPlayer.job2.grade_name
 local salary2  = xPlayer.job2.grade_salary
 
 and go to line 48 and add:
-if salary2 > 0 then
+```
+                if salary2 > 0 then
 				if job2 == 'unemployed2' then -- unemployed
 				
 				elseif Config.EnableSocietyPayouts then -- possibly a society
@@ -44,7 +45,7 @@ if salary2 > 0 then
 					TriggerClientEvent('esx:showAdvancedNotification', xPlayer.source, _U('bank'), _U('received_paycheck'), _U('received_salary', salary2), 'CHAR_BANK_MAZE', 9)
 				end
 end
-
+```
 * Screenshot: 
 https://imgur.com/a/ekMeiqw
 
