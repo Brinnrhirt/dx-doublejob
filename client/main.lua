@@ -18,7 +18,7 @@ Citizen.CreateThread(function()
 	ESX.PlayerData = ESX.GetPlayerData()
 end)
 
-RegisterCommand(Config.Command, function (src, args, raw)
+RegisterCommand(Config.SwitchCommand, function (src, args, raw)
     if timer == 0 and allowCommand then
         TriggerServerEvent('brinn-secondjob:getsecondjob')
         timer = Config.Timer
