@@ -13,7 +13,7 @@ AddEventHandler('brinn_switchjob:getsecondjob', function()
     MySQL.Async.fetchAll('SELECT job2, job2_grade FROM users WHERE identifier = @identifier', { ['@identifier'] = xPlayer.getIdentifier() }, function(result)
 
         if result[1] ~= nil and result[1].job2 ~= nil and result[1].job2_grade ~= nil then
-                TriggerClientEvent('brinn_switchjob:returnsecondjob', _source, result[1].job2, result[1].job2_grade)
+                TriggerClientEvent('brinn-secondjob:returnsecondjob', _source, result[1].job2, result[1].job2_grade)
         else
             local msg = 'There was an error while loading your second job from database'
             local type = 'error'
