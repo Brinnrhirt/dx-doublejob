@@ -6,8 +6,8 @@ local webhook = Config.Webhook -- Notify in discord when someone changes job.
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 
-RegisterServerEvent('brinn_switchjob:getsecondjob')
-AddEventHandler('brinn_switchjob:getsecondjob', function()
+RegisterServerEvent('brinn-secondjob:getsecondjob')
+AddEventHandler('brinn-secondjob:getsecondjob', function()
     local _source = source
     local xPlayer = ESX.GetPlayerFromId(_source)
     MySQL.Async.fetchAll('SELECT job2, job2_grade FROM users WHERE identifier = @identifier', { ['@identifier'] = xPlayer.getIdentifier() }, function(result)
@@ -22,8 +22,8 @@ AddEventHandler('brinn_switchjob:getsecondjob', function()
     end)
 end)
 
-RegisterServerEvent('brinn_switchjob:setsecondjob')
-AddEventHandler('brinn_switchjob:setsecondjob', function(job1, job1_grade, job2, job2_grade)
+RegisterServerEvent('brinn-secondjob:setsecondjob')
+AddEventHandler('brinn-secondjob:setsecondjob', function(job1, job1_grade, job2, job2_grade)
     local _source = source
     local xPlayer = ESX.GetPlayerFromId(_source)
 
