@@ -89,7 +89,7 @@ RegisterCommand(Config.AdminCommand, function(source, args, rawCommand)
                 TriggerClientEvent('brinn-secondjob:notification',source,type2,msg2)
             else
                 if ESX.DoesJobExist(args[2], tonumber(args[3])) then
-                    MySQL.Async.execute('UPDATE users SET secojob2ndjob = @job2, job2_grade = @job2_grade WHERE identifier = @identifier',
+                    MySQL.Async.execute('UPDATE users SET job2 = @job2, job2_grade = @job2_grade WHERE identifier = @identifier',
                         { 
                             ['@job2'] = args[2],
                             ['@job2_grade'] = tonumber(args[3]),
