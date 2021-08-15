@@ -1,5 +1,5 @@
 Config = {}
-
+Config.Locale = 'en'
 Config.SwitchCommand = 'switchjob'
 Config.NotificationCommand = 'showjob'
 Config.AdminCommand = 'setjob2'
