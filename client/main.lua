@@ -24,7 +24,7 @@ RegisterCommand(Config.SwitchCommand, function (src, args, raw)
         timer = Config.Timer
         allowCommand = false
     else
-        local msg1 = 'You have to wait'..timer..' to change your job again'
+        local msg1 = _U('timer', timer)
 		local type = 'error'
         TriggerEvent('brinn-secondjob:notification',type,msg1) 
     end
@@ -37,12 +37,9 @@ AddEventHandler('brinn-secondjob:returnsecondjob', function(job2, job2_grade)
     job1 = ESX.PlayerData.job.name
     job1_grade = ESX.PlayerData.job.grade
     TriggerServerEvent('brinn-secondjob:setsecondjob', job1, job1_grade, job2, job2_grade)
-    local msg1 = 'You switch jobs.'
-    local msg2 = 'Your actual job its: '..ESX.PlayerData.job.label..' and your rank its: '..ESX.PlayerData.job.grade_label
 	local type = 'success'
-    TriggerEvent('brinn-secondjob:notification',type,msg1) 
+    TriggerEvent('brinn-secondjob:notification',type,_U('switch_job')) 
     Wait(5000)
-    TriggerEvent('brinn-secondjob:notification',type,msg2)
 end)
 
 Citizen.CreateThread(function()

@@ -3,11 +3,15 @@ game 'gta5'
 
 server_scripts {
     'config.lua',
+    'locales/es.lua',
+	'locales/en.lua',
     'server/main.lua',
     '@mysql-async/lib/MySQL.lua'
 }
 
 client_scripts {
     'config.lua',
+    'locales/es.lua',
+	'locales/en.lua',
     'client/main.lua'
 }

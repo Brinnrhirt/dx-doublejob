@@ -15,7 +15,7 @@ AddEventHandler('brinn-secondjob:getsecondjob', function()
         if result[1] ~= nil and result[1].job2 ~= nil and result[1].job2_grade ~= nil then
                 TriggerClientEvent('brinn-secondjob:returnsecondjob', _source, result[1].job2, result[1].job2_grade)
         else
-            local msg = 'There was an error while loading your second job from database'
+            local msg = _U('error_loading')
             local type = 'error'
             TriggerClientEvent('brinn-secondjob:notification',source,type,msg)
         end
@@ -50,8 +50,8 @@ RegisterCommand(Config.NotificationCommand, function(source)
     local xPlayer = ESX.GetPlayerFromId(_source)
     local job = xPlayer.job.label
     local jobgrade = xPlayer.job.grade_label
-    local msg = 'You are working as: ' .. job .. ' - ' .. jobgrade
-    local type = 'error'
+    local msg = _U('job', job, jobgrade)
+    local type = 'info'
     TriggerClientEvent('brinn-secondjob:notification',source,type,msg)
 end)
 
@@ -78,13 +78,13 @@ RegisterCommand(Config.AdminCommand, function(source, args, rawCommand)
     local xPlayer = ESX.GetPlayerFromId(_source)
     if havePermission(xPlayer)then
         if not args[1] or not args[2] or not args[3] then
-            local msg = 'You did not enter all the fields'
+            local msg = _U('not_fills')
             local type = 'error'
             TriggerClientEvent('brinn-secondjob:notification',source,type,msg)
         else
             local tPlayer = ESX.GetPlayerFromId(tonumber(args[1])) -- Tonumber in case somebody adds a paramter as a string, not a number
             if not tPlayer then
-                local msg2 = 'The ID is not online on the server'
+                local msg2 = _U('id_offline')
                 local type2 = 'error'
                 TriggerClientEvent('brinn-secondjob:notification',source,type2,msg2)
             else
@@ -97,21 +97,27 @@ RegisterCommand(Config.AdminCommand, function(source, args, rawCommand)
                         },
                             function(affectedRows)
                                 if affectedRows == 0 then
-                                    local msg3 = 'There were some issues with changing the second job, please try it again'
+                                    local msg3 = _U('error')
                                     local type3 = 'error'
                                     TriggerClientEvent('brinn-secondjob:notification',source,type3,msg3)
                                     print('Player with steam ID: '..xPlayer.getIdentifier()..' had an issue while setting setjob to other player')
+                                else
+                                    local msg5 = _U('setjob', GetPlayerName(tonumber(args[1]))
+                                    local type5 = 'success'
+                                    TriggerClientEvent('brinn-secondjob:notification',source,type5,msg5)
                                 end
                             end
                     )
                 else
-                    local msg4 = 'Enterred job does not exist'
+                    local msg4 = _U('job_error')
                     local type4 = 'error'
                     TriggerClientEvent('brinn-secondjob:notification',source,type4,msg4)
                 end
 
             end
         end
+    else
+        TriggerClientEvent('brinn-secondjob:notification',source,"error",_U('no_permissions'))
     end
 end, false)
 
