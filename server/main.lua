@@ -82,8 +82,8 @@ RegisterCommand(Config.AdminCommand, function(source, args, rawCommand)
             local type = 'error'
             TriggerClientEvent('brinn-secondjob:notification',source,type,msg)
         else
-            local tPlayer = ESX.GetPlayerFromId(tonumber(args[1])) -- Tonumber in case somebody adds a paramter as a string, not a number
-            if not tPlayer then
+            local xTarget = ESX.GetPlayerFromId(tonumber(args[1])) -- Tonumber in case somebody adds a paramter as a string, not a number
+            if not xTarget then
                 local msg2 = _U('id_offline')
                 local type2 = 'error'
                 TriggerClientEvent('brinn-secondjob:notification',source,type2,msg2)
@@ -93,27 +93,23 @@ RegisterCommand(Config.AdminCommand, function(source, args, rawCommand)
                         { 
                             ['@job2'] = args[2],
                             ['@job2_grade'] = tonumber(args[3]),
-                            ['@identifier'] = tPlayer.getIdentifier(),
+                            ['@identifier'] = xTarget.getIdentifier(),
                         },
                             function(affectedRows)
                                 if affectedRows == 0 then
-                                    local msg3 = _U('error')
                                     local type3 = 'error'
-                                    TriggerClientEvent('brinn-secondjob:notification',source,type3,msg3)
+                                    TriggerClientEvent('brinn-secondjob:notification',source,type3,_U('error'))
                                     print('Player with steam ID: '..xPlayer.getIdentifier()..' had an issue while setting setjob to other player')
                                 else
-                                    local msg5 = _U('setjob', GetPlayerName(tonumber(args[1]))
                                     local type5 = 'success'
-                                    TriggerClientEvent('brinn-secondjob:notification',source,type5,msg5)
+                                    TriggerClientEvent('brinn-secondjob:notification',source,type5,_U('setjob', GetPlayerName(tonumber(args[1]))))
                                 end
                             end
                     )
                 else
-                    local msg4 = _U('job_error')
                     local type4 = 'error'
-                    TriggerClientEvent('brinn-secondjob:notification',source,type4,msg4)
+                    TriggerClientEvent('brinn-secondjob:notification',source,type4,_U('job_error'))
                 end
-
             end
         end
     else
