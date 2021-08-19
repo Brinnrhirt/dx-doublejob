@@ -1,5 +1,5 @@
 # Double JOB
-Double JOB script for ESX made by Brinnrhirt
+Double JOB script for ESX made by Dessaux
 
 # Discord
 Join here to report bugs or ask for help

@@ -14,12 +14,12 @@ Config.AdminPermissions = { -- change this as your server ranking ( default are 
 }
 
 --	Your Notification System
-RegisterNetEvent('brinn-secondjob:notification')
-AddEventHandler('brinn-secondjob:notification', function(type,msg)
+RegisterNetEvent('dx-secondjob:notification')
+AddEventHandler('dx-secondjob:notification', function(type,msg)
 --	Types used: (error | success)
 --	print(msg)
 --	exports['mythic_notify']:SendAlert(type,msg)
-    exports.brinnNotify:SendNotification({                    
+    exports.dxNotify:SendNotification({                    
         text = '<b><i class="fas fa-bell"></i> NOTIFICACIÓN</span></b></br><span style="color: #a9a29f;">'..msg..'',
         type = type,
         timeout = 3000,

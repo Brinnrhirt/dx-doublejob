@@ -20,25 +20,25 @@ end)
 
 RegisterCommand(Config.SwitchCommand, function (src, args, raw)
     if timer == 0 and allowCommand then
-        TriggerServerEvent('brinn-secondjob:getsecondjob')
+        TriggerServerEvent('dx-secondjob:getsecondjob')
         timer = Config.Timer
         allowCommand = false
     else
         local msg1 = _U('timer', timer)
 		local type = 'error'
-        TriggerEvent('brinn-secondjob:notification',type,msg1) 
+        TriggerEvent('dx-secondjob:notification',type,msg1) 
     end
 end, false)
 
-RegisterNetEvent('brinn-secondjob:returnsecondjob')
-AddEventHandler('brinn-secondjob:returnsecondjob', function(job2, job2_grade)
+RegisterNetEvent('dx-secondjob:returnsecondjob')
+AddEventHandler('dx-secondjob:returnsecondjob', function(job2, job2_grade)
     job2 = job2
     job2_grade = job2_grade
     job1 = ESX.PlayerData.job.name
     job1_grade = ESX.PlayerData.job.grade
-    TriggerServerEvent('brinn-secondjob:setsecondjob', job1, job1_grade, job2, job2_grade)
+    TriggerServerEvent('dx-secondjob:setsecondjob', job1, job1_grade, job2, job2_grade)
 	local type = 'success'
-    TriggerEvent('brinn-secondjob:notification',type,_U('switch_job')) 
+    TriggerEvent('dx-secondjob:notification',type,_U('switch_job')) 
     Wait(5000)
 end)
 
