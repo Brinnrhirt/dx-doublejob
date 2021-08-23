@@ -19,6 +19,7 @@ AddEventHandler('dx-secondjob:notification', function(type,msg)
 --	Types used: (error | success)
 --	print(msg)
 --	exports['mythic_notify']:SendAlert(type,msg)
+--  ESX.ShowNotification(msg)
     exports.dxNotify:SendNotification({                    
         text = '<b><i class="fas fa-bell"></i> NOTIFICACIÓN</span></b></br><span style="color: #a9a29f;">'..msg..'',
         type = type,
